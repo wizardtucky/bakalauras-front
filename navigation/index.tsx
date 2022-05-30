@@ -73,7 +73,7 @@ function RootNavigator() {
           />
           <Stack.Group screenOptions={{ presentation: 'modal' }}>
             <Stack.Screen name='Modal' component={ModalScreen} />
-            <Stack.Screen name='ReservationModal' component={ReservationModalScreen} />
+            <Stack.Screen name='Reservation' component={ReservationModalScreen} />
           </Stack.Group>
         </>
       )}
@@ -110,7 +110,7 @@ function BottomTabNavigator() {
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'ParkingMap'>) => ({
           title: 'Parking',
-          tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name='car' color={color} />,
           headerRight: () => (
             <Pressable
               onPress={onLogoutHandler}
@@ -133,7 +133,7 @@ function BottomTabNavigator() {
         component={MyListTabScreen}
         options={{
           title: 'My Parking spots',
-          tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name='user' color={color} />,
         }}
       />
     </BottomTab.Navigator>

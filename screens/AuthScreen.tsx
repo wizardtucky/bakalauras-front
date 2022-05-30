@@ -23,6 +23,7 @@ export default function AuthScreen({ navigation }) {
         user: response.user,
       })
     } catch (err) {
+      alert("Incorrect email or password")
       console.log('Incorrect email or password', err)
     }
   }
@@ -56,6 +57,8 @@ export default function AuthScreen({ navigation }) {
           <TextInput
             style={tw`w-full my-[16] h-[12] px-[12] border border-outline`}
             placeholder='Password'
+            
+            secureTextEntry={true}
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}

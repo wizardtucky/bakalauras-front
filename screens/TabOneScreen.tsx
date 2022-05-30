@@ -50,7 +50,7 @@ export default function TabOneScreen({
             coordinate={{ latitude: m.latitude, longitude: m.longitude }}
             pinColor={m.userWhoReserved === 0 ? 'green' : 'red'}
             onPress={() => {
-              navigation.navigate('ReservationModal', {
+              navigation.navigate('Reservation', {
                 item: m,
               })
             }}

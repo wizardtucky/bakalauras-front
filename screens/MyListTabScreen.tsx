@@ -52,24 +52,6 @@ export default function MyListTabScreen({ navigation }) {
           <View
             style={tw`flex w-full tp-body-medium border-b border-secondary-container p-[16]`}
           >
-            <Text style={tw`tp-title-medium`}>{item.address}</Text>
-            <Text>Latitude: {item.latitude}</Text>
-            <Text>Longitude: {item.longitude}</Text>
-
-            {isAdditionalInfoPanelVisible(item) && (
-              <View
-                style={tw`flex bg-surface-1 tp-label-medium rounded-[12px] p-[16px] mt-[16px]`}
-              >
-                <Text style={tw`tp-title-medium mb-[16px]`}>
-                  Additional info
-                </Text>
-                {item.paidSpot && <Text>Paid spot</Text>}
-                {item.smallCarSpot && <Text>Small car spot</Text>}
-                {item.disabledSpot && <Text>Disabled people spot</Text>}
-                {item.creationTime && <Text>{moment(item.creationTime).format('MMM DD, HH:mm:ss')}</Text>}
-              </View>
-            )}
-
             <View
               style={tw`w-full h-[172px] my-[16px] rounded-[12px] overflow-hidden`}
             >
@@ -95,6 +77,49 @@ export default function MyListTabScreen({ navigation }) {
                 />
               </MapView>
             </View>
+            <Text style={tw`tp-title-medium`}>{item.address}: {moment(item.creationTime).format('MMM DD, HH:mm:ss')}</Text>
+            {/* <Text style={tw`tp-title-medium`}>{item.creationTime && <Text>{moment(item.creationTime).format('MMM DD, HH:mm:ss')}</Text>}</Text> */}
+            <Text>Latitude: {item.latitude}</Text>
+            <Text>Longitude: {item.longitude}</Text>
+
+            {isAdditionalInfoPanelVisible(item) && (
+              <View
+                style={tw`flex bg-surface-1 tp-label-medium rounded-[12px] p-[16px] mt-[16px]`}
+              >
+                <Text style={tw`tp-title-medium mb-[16px]`}>
+                  Additional info
+                </Text>
+                {item.paidSpot && <Text>Paid spot</Text>}
+                {item.smallCarSpot && <Text>Small car spot</Text>}
+                {item.disabledSpot && <Text>Disabled people spot</Text>}
+              </View>
+            )}
+
+            {/* <View
+              style={tw`w-full h-[172px] my-[16px] rounded-[12px] overflow-hidden`}
+            >
+              <MapView
+                style={tw`w-full h-full`}
+                region={{
+                  latitude: item.latitude,
+                  longitude: item.longitude,
+                  latitudeDelta: 0.001,
+                  longitudeDelta: 0.01,
+                }}
+                pitchEnabled={false}
+                rotateEnabled={false}
+                zoomEnabled={false}
+                scrollEnabled={false}
+              >
+                <Marker
+                  coordinate={{
+                    latitude: item.latitude,
+                    longitude: item.longitude,
+                  }}
+                  pinColor={item.userWhoReserved === 0 ? 'green' : 'red'}
+                />
+              </MapView>
+            </View> */}
             <View style={tw`flex-row justify-between`}>
               <Button onPress={() => deleteItem(item.id)} title='Delete' />
               <Button onPress={() => editItem(item)} title='Edit' />
